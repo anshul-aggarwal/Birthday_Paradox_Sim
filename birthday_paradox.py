@@ -30,9 +30,13 @@ def birthday_paradox(no_of_people, simulations):
 def main():
     day = []
     success = []
-    for i in range(1, 366):
+    for i in range(1, 366):     #Executing for all possible cases where can have unique birthdays, i.e. from 1 person to a maximum of 365 people in a room
         day.append(i)
         success.append(birthday_paradox(i, no_of_simulations))
+
+    outfile = open("results.csv", "w")
+    for i in range(365):
+        outfile.write(str(day[i]) + "," + str(success[i]) + "\n")
 
     plt.plot(day, success)
     plt.show()
